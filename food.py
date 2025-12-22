@@ -3,6 +3,8 @@ from pathlib import Path
 from typing import Annotated, Optional, TypedDict
 from fastapi import FastAPI, Form, UploadFile, File
 from fastapi.responses import JSONResponse
+import os
+import uvicorn
 
 from langchain_groq import ChatGroq
 from langchain_huggingface import HuggingFaceEmbeddings
@@ -405,3 +407,14 @@ async def analyze_meal(
 
     except Exception as e:
         return JSONResponse({"error": str(e)}, status_code=500)
+
+
+
+
+
+
+
+
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 10000))
+    uvicorn.run("food:app", host="0.0.0.0", port=port, reload=True)
