@@ -39,7 +39,9 @@ PERSIST_DIR.mkdir(parents=True, exist_ok=True)
 documents = ingest_nutrition_excels(DOCS_DIR)
 
 # Chroma + embeddings
-embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-mpnet-base-v2")
+embeddings = HuggingFaceEmbeddings(
+    model_name="sentence-transformers/all-mpnet-base-v2"
+)
 vector_store = Chroma(
     persist_directory=str(PERSIST_DIR), 
     embedding_function=embeddings,
