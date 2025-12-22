@@ -34,7 +34,6 @@ DOCS_DIR = PROJECT_ROOT / "data"
 PERSIST_DIR = PROJECT_ROOT / "db" / "chroma_db"
 PERSIST_DIR.mkdir(parents=True, exist_ok=True)
 
-
 # Load documents
 documents = ingest_nutrition_excels(DOCS_DIR)
 
@@ -140,6 +139,7 @@ def extract_image_bytes(messages: list) -> bytes | None:
                         return base64.b64decode(base64_data)
 
     return None
+
 
 # ======================================================
 # Graph State
